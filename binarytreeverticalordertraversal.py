@@ -29,7 +29,7 @@ class Solution(object):
             if i[1] == len(res):
                 res.append([])
             res[i[1]].append((i[0], i[2]))
-        print res
+        #print res
         for i in xrange(len(res)):
             res[i].sort(key = lambda x: x[1], reverse = True)
             res[i] = [j[0] for j in res[i]]
