@@ -15,3 +15,21 @@ class Solution(object):
                     res[-1] = nums[j]
                     break
         return res
+
+	class Solution(object):
+    def nextGreaterElement(self, findNums, nums):
+        """
+        :type findNums: List[int]
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        numDict = {}
+        numStack = []
+        res = []
+        for n in nums:
+            while len(numStack) and numStack[-1] < n:
+                numDict[numStack.pop()] = n
+            numStack.append(n)
+        for n in findNums:
+            res.append(numDict.get(n,-1))
+        return res
