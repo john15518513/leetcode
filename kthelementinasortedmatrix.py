@@ -16,3 +16,4 @@ class Solution(object):
                     heapq.heappush(h, -1*cell)
                 
         return heapq.heappop(h)*-1
+
