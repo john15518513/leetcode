@@ -16,3 +16,6 @@ class Solution(object):
             diff[i] = same[i-1]*(k-1) + diff[i-1]*(k-1)
             
         return diff[-1] + same[-1]
+
+ans = Solution()
+print ans.numWays(2,2);
