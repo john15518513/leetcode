@@ -47,3 +47,42 @@ private:
  * int param_1 = obj.get(key);
  * obj.put(key,value);
  */
+
+class LRUCache {
+public:
+    LRUCache(int capacity): _capacity(capacity) {
+        
+    }
+    
+    int get(int key) {
+        if (map.find(key) == map.end()) return -1;
+        int val = map[key]->second;
+        List.erase(map[key]);
+        List.push_front(make_pair(key, val));
+        map[key] = List.begin();
+        return val;
+    }
+    
+    void put(int key, int value) {
+        if (map.find(key) != map.end()) {
+            List.erase(map[key]);
+        }
+        else if (List.size() == _capacity) {
+                map.erase(List.back().first);
+                List.pop_back();
+        }
+        List.push_front(make_pair(key, value));
+        map[key] = List.begin();
+    }
+private:
+    int _capacity;
+    unordered_map<int, list<pair<int, int>>::iterator> map;
+    list<pair<int, int>> List;
+};
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache obj = new LRUCache(capacity);
+ * int param_1 = obj.get(key);
+ * obj.put(key,value);
+ */
